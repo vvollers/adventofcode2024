@@ -148,8 +148,6 @@ internal static class Runner
             WriteLine(ConsoleColor.Red, "Errors:\n" + string.Join("\n", errors));
         }
 
-
-        WriteLine(ConsoleColor.Yellow, "Please support the maintainer: https://github.com/sponsors/encse");
         WriteLine();
     }
 
