@@ -5,11 +5,12 @@
     <LangVersion>13</LangVersion>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <UseAppHost>false</UseAppHost>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AngleSharp" Version="0.14.0" />
-    <PackageReference Include="AngleSharp.Css" Version="0.14.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0-3.final" />
+    <PackageReference Include="AngleSharp" Version="0.14.0"/>
+    <PackageReference Include="AngleSharp.Css" Version="0.14.0"/>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0-3.final"/>
     <PackageReference Include="Roslynator.Analyzers" Version="4.12.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
