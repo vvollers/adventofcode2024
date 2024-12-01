@@ -13,10 +13,8 @@ internal partial class Solution : ISolver
 {
     public object PartOne(string input)
     {
-        List<Pair> pairs = input.ParseLineData(ParseLine);
+        (List<int> leftNumbers, List<int> rightNumbers) = ParseInput(input);
 
-        List<int> leftNumbers = pairs.Select(p => p.Left).Order().ToList();
-        List<int> rightNumbers = pairs.Select(p => p.Right).Order().ToList();
         List<int> distances = leftNumbers.Zip(rightNumbers).
             Select(p => Math.Max(p.Second, p.First) - Math.Min(p.Second, p.First)).
             ToList();
@@ -25,13 +23,24 @@ internal partial class Solution : ISolver
 
     public object PartTwo(string input)
     {
-        List<Pair> pairs = input.ParseLineData(ParseLine);
+        (List<int> leftNumbers, List<int> rightNumbers) = ParseInput(input);
 
-        List<int> leftNumbers = pairs.Select(p => p.Left).Order().ToList();
-        List<int> rightNumbers = pairs.Select(p => p.Right).Order().ToList();
         List<int> counts = leftNumbers.ConvertAll(n => rightNumbers.Count(num => num == n));
         List<int> aggregates = leftNumbers.Zip(counts).Select(p => p.First * p.Second).ToList();
         return aggregates.Sum();
+    }
+
+    private static (List<int> leftNumbers, List<int> rightNumbers) ParseInput(string input)
+    {
+        List<Pair> pairs = input.ParseLineData(ParseLine);
+
+        List<int> leftNumbers = pairs.ConvertAll(p => p.Left);
+        List<int> rightNumbers = pairs.ConvertAll(p => p.Right);
+
+        leftNumbers.Sort();
+        rightNumbers.Sort();
+
+        return (leftNumbers, rightNumbers);
     }
 
     private static Pair ParseLine(string line)
