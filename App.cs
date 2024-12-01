@@ -16,12 +16,12 @@ var action =
     Command(args, Args("update", "([0-9]+)/([0-9]+)"), m => {
         var year = int.Parse(m[1]);
         var day = int.Parse(m[2]);
-        return () => new Updater().Update(year, day).Wait();
+        return () => Updater.Update(year, day).Wait();
     }) ??
     Command(args, Args("update", "today"), m => {
         var dt = DateTime.UtcNow.AddHours(-5);
         if (dt is { Month: 12, Day: >= 1 and <= 25 }) {
-            return () => new Updater().Update(dt.Year, dt.Day).Wait();
+            return () => Updater.Update(dt.Year, dt.Day).Wait();
         } else {
             throw new AocCommuncationException("Event is not active. This option works in Dec 1-25 only)");
         }
