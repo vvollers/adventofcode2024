@@ -20,4 +20,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="**\*.in"/>
+  </ItemGroup>
+  <Target Name="CopyInFiles" AfterTargets="Build">
+    <Copy SourceFiles="@(AdditionalFiles)" DestinationFolder="$(OutDir)%(RecursiveDir)"/>
+  </Target>
 </Project>

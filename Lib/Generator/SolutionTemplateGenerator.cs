@@ -15,7 +15,7 @@ static class SolutionTemplateGenerator {
             using System.Text;
             
             [ProblemName("{{problem.Title}}")]
-            class Solution : Solver {
+            class Solution : ISolver {
             
                 public object PartOne(string input) {
                     return 0;

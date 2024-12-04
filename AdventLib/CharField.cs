@@ -37,7 +37,9 @@ internal sealed class CharField : IEquatable<CharField>
                 return this.FieldData[y][x];
             }
 
-            throw new AggregateException("Index out of range.");
+            throw new AggregateException(
+                $"Index out of range. {x} >= {this.FieldData[y].Length}/{this.Width} or {y} >= {this.FieldData.Length}/{this.Height}"
+            );
         }
         set
         {

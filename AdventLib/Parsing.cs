@@ -248,6 +248,6 @@ public static class Parsing
     /// <returns>A 2D array of characters.</returns>
     public static char[][] ParseToCharGrid(this string input)
     {
-        return input.Split("\n").Select(o => o.ToCharArray()).ToArray();
+        return input.Split("\n").Select(o => o.Trim().ToCharArray()).ToArray();
     }
 }
